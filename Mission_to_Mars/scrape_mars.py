@@ -13,10 +13,10 @@ def scrape():
     # Create mars_data dict that we can insert into mongoDB
     mars_data = {}
 
+
     # Access and visit the NASA Mars News Site URL
     news_url = 'https://mars.nasa.gov/news/'
     browser.visit(news_url)
-
 
     # HTML object
     html = browser.html
@@ -35,6 +35,8 @@ def scrape():
     news_p = news.find('div', class_="article_teaser_body")
 
     # Add them to our mars_data dict
+    news_title = str(news_title)
+    news_p = str(news_p)
     mars_data["news title"] = news_title
     mars_data["news paragraph"] = news_p
 
@@ -56,6 +58,7 @@ def scrape():
     featured_image_url = 'https://www.jpl.nasa.gov' + featured_image_url
 
     # Add it to our mars_data dict
+    featured_image_url = str(featured_image_url)
     mars_data["featured_image_url"] = featured_image_url
 
 
@@ -73,6 +76,7 @@ def scrape():
     mars_weather = soup.find('p', class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text
 
     # Add it to our mars_data dict
+    mars_weather = str(mars_weather)
     mars_data["mars_weather"] = mars_weather
 
 
@@ -94,6 +98,7 @@ def scrape():
     html_table = facts_df.to_html()
 
     # Add facts table to our mars_data dict
+    html_table = str(html_table)
     mars_data["facts_table"] = html_table
 
 
@@ -127,6 +132,8 @@ def scrape():
         img_title = soup.find('h2', class_="title").text
         
         # Get the data into a dictionary
+        img_url = str(img_url)
+        img_title = str(img_title)
         img_dict = {
             'img_url': img_url,
             'img_title': img_title

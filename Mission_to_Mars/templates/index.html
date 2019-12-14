@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Surfing</title>
+  <title>Mars Data</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
@@ -17,15 +17,12 @@
     </div>
       
     <!-- surf data -->
-    <div class="col-lg-8">
-      <h3 class="heading">Latest Mars News</h3>
-      <h4>{{ mars_data.news_title }}</h4>
-      <p>{{ mars_data.news_p }}</p>
-      <br>
-      <h3 class="heading">Featured Mars Image</h3>
-      <a href="{{ mars_data.featured_img_url }}">
-          <img class="figure_img" src="{{ mars_data.featured_img_url }}" width=900px>
-      </a>
+    <div class="row">
+      <div class="col-md- col-md-offset-2">
+        <h3>Latest Mars News</h3>
+        <h4>{{ mars_data.news_title }}</h4>
+        <p>{{ mars_data.news_p }}</p>
+      </div>
     </div>
   </div>
 
