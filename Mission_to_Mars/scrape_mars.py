@@ -31,14 +31,14 @@ def scrape():
     news = latest_news[0]
 
     # Use BeautifulSoup' find() method to navigate and retrieve attributes
-    news_title = news.find('div', class_="content_title")
-    news_p = news.find('div', class_="article_teaser_body")
+    news_title = news.find('div', class_="content_title").text
+    news_p = news.find('div', class_="article_teaser_body").text
 
     # Add them to our mars_data dict
     news_title = str(news_title)
     news_p = str(news_p)
-    mars_data["news title"] = news_title
-    mars_data["news paragraph"] = news_p
+    mars_data["news_title"] = news_title
+    mars_data["news_p"] = news_p
 
     # Access and visit the JPL Mars Space Images URL
     featured_img_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
@@ -89,16 +89,16 @@ def scrape():
 
     # Slice off the dataframe that we want usin normal indexing
     facts_df = facts_tables[0]
-    facts_df.columns = ['Fact', 'Value']
+    facts_df.columns = ['Description', 'Value']
 
     # Set the index to the `Fact` column
-    facts_df.set_index('Fact', inplace=True)
+    facts_df.set_index('Description', inplace=True)
 
     # Convert the Dataframe to HTML
     html_table = facts_df.to_html()
 
     # Add facts table to our mars_data dict
-    html_table = str(html_table)
+    html_table = (html_table)
     mars_data["facts_table"] = html_table
 
 
